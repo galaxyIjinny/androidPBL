@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:android_pbl/src/components/message_popup.dart';
 import 'package:android_pbl/src/pages/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +37,14 @@ class BottomNavController extends GetxController {
 
   Future<bool> willPopActioin() async {
     if (bottomHistory.length == 1) {
-      showDialog(context: Get.context!, builder: (context) => MessagePopup());
+      showDialog(context: Get.context!, builder: (context) => MessagePopup(
+        message: '종료하시겠습니까?',
+        okCallback: () {
+          exit(0);
+        },
+        cancelCallback: Get.back,
+        title: '시스템',
+      ));
       print('exit');
       return true;
     } else {
