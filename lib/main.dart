@@ -1,4 +1,7 @@
+import 'package:android_pbl/src/app.dart';
+import 'package:android_pbl/src/binding/init_bindings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -23,8 +26,14 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.black),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialBinding: InitBinding(),
+      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const App(),
     );
   }
 }
